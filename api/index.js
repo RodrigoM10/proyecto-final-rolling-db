@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 
- 
 // crear el servidor
 const app = express();
 
@@ -21,5 +20,5 @@ app.use('/api/usuarios', usuariosRoutes);
 
 // puerto y arranque del servidor
 app.listen(process.env.PORT || 4000, () => {
-  console.log('Servidor Funcionando');
-})
+    console.log('Servidor Funcionando');
+});
