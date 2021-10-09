@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_URL);
 // Habilitar express.json (tambien se puede usar body parser)
 app.use(express.json({ extended: true }));
 // Habilitar urlencoded, para consultas desde postman en este formato
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 //importar rutas
 app.use('/api/usuarios', usuariosRoutes);
