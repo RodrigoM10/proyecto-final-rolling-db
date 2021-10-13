@@ -17,37 +17,23 @@ const UsuariosSchema = mongoose.Schema({
         unique: true,
     },
     birthday: {
-        day: {
-            type: Number,
-            required: true,
-            trim: true,
-        },
-        month: {
-            type: Number,
-            required: true,
-            trim: true,
-        },
-        year: {
-            type: Number,
-            required: true,
-            trim: true,
-        },
+        type: Date,
+        required: true,
+        default: Date.now(),
     },
     password: {
         type: String,
         required: true,
         trim: true,
     },
-    registro: {
+    register: {
         type: Date,
         default: Date.now(),
     },
-    select: {
-        type: Number,
-        trim: true,
-    },
-    checkbox: {
-        type: Boolean,
+    role: {
+        type: String,
+        default: 'user',
+        trime: true,
     },
 });
 
