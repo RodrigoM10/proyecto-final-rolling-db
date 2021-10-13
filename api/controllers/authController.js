@@ -41,7 +41,7 @@ exports.registrar = async (req, res) => {
         usuario.password = await bcryptjs.hash(password, salt);
 
         //guardar usuario
-        // await usuario.save();
+        await usuario.save();
 
         //mensaje de exito
         res.send('Usuario Creado Correctamente');
