@@ -2,11 +2,15 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 const productosRoutes = require('./routes/productosRoutes');
 const authRoutes = require('./routes/authRoutes');
 // crear el servidor
 const app = express();
+
+// Permitir acceso, cors
+app.use(cors());
 
 //Conectar a mongodb
 mongoose.connect(process.env.MONGO_URL);
