@@ -41,7 +41,7 @@ exports.registrar = async (req, res) => {
         usuario.password = await bcryptjs.hash(password, salt);
 
         //guardar usuario
-        // await usuario.save();
+        await usuario.save();
 
         //mensaje de exito
         res.send('Usuario Creado Correctamente');
@@ -85,7 +85,7 @@ exports.login = async (req, res) => {
             payload,
             process.env.SECRETA,
             {
-                expiresIn: 360000, //1 hora
+                expiresIn: 3600, //1 hora
             },
             (error, token) => {
                 if (error) throw error;
