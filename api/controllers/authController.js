@@ -108,7 +108,9 @@ exports.obtenerUsuarioAutenticado = async (req, res) => {
     // Validar Token
     try {
         const cifrado = jwt.verify(token, process.env.SECRETA);
-        const usuario = await Usuario.findById(cifrado.usuario.id).select('name role email');
+        const usuario = await Usuario.findById(cifrado.usuario.id).select(
+            'name lastName birthday register role email'
+        );
         res.send(usuario);
     } catch (error) {
         res.status(401).json({ msg: 'Token no valido' });
