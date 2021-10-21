@@ -35,6 +35,11 @@ const UsuariosSchema = mongoose.Schema({
         default: 'user',
         trime: true,
     },
+    image: {
+        type: String,
+        default: 'https://res.cloudinary.com/dcx1rcwvu/image/upload/v1634755567/th_ji3jqh.jpg',
+        trime: true,
+    },
 });
 
 module.exports = mongoose.model('Usuario', UsuariosSchema);

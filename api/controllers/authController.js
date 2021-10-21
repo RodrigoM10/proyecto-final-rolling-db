@@ -109,7 +109,7 @@ exports.obtenerUsuarioAutenticado = async (req, res) => {
     try {
         const cifrado = jwt.verify(token, process.env.SECRETA);
         const usuario = await Usuario.findById(cifrado.usuario.id).select(
-            'name lastName birthday register role email'
+            'name lastName birthday register role image email'
         );
         res.send(usuario);
     } catch (error) {
