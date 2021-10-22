@@ -58,12 +58,28 @@ exports.obtenerUsuario = async (req, res) => {
 };
 
 exports.modificarUsuario = async (req, res) => {
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(400).json({ msg: errores.array() });
+    }
     try {
         const usuario = await Usuario.findById(req.params.id);
         if (!req.body.name) {
             return res.status(400).send('Dato de nombre incompleto');
         }
         usuario.name = req.body.name;
+        if (!req.body.lastName) {
+            return res.status(400).send('Dato de apellido incompleto');
+        }
+        usuario.lastName = req.body.lastName;
+        if (!req.body.email) {
+            return res.status(400).send('Dato de email incompleto');
+        }
+        usuario.email = req.body.email;
+        if (!req.body.birthday) {
+            return res.status(400).send('Dato de birthday incompleto');
+        }
+        usuario.birthday = req.body.birthday;
         await usuario.save();
         res.send(usuario);
     } catch (error) {

@@ -18,7 +18,16 @@ router.post(
 );
 router.get('/', usuarioController.obtenerUsuarios);
 router.get('/:id', usuarioController.obtenerUsuario);
-router.put('/:id', usuarioController.modificarUsuario);
+// router.put('/:id', usuarioController.modificarUsuario);
+router.put(
+    '/:id',
+    [
+        check('name', 'El nombre es obligatorio').not().isEmpty(),
+        check('lastName', 'El apellido es obligatorio').not().isEmpty(),
+        check('email', 'Agrega un Email Valido').isEmail(),
+    ],
+    usuarioController.modificarUsuario
+);
 router.delete('/:id', usuarioController.borrarUsuario);
 
 router.get('/', () => {});
