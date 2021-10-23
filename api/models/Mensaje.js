@@ -10,7 +10,7 @@ const MensajesSchema = mongoose.Schema({
         required: true,
         trim: true,
     },
-    messege: {
+    message: {
         type: String,
         required: true,
         trim: true,

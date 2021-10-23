@@ -11,8 +11,8 @@ router.post(
     [
         check('senderName', 'El nombre es obligatorio').not().isEmpty(),
         check('senderEmail', 'Agrega un Email Valido').isEmail(),
-        check('messege', 'El messege debe tener como mínimo de 15 caracteres').isLength({ min: 15 }),
-        check('messege', 'El messege debe tener como maximo de 250 caracteres').isLength({ max: 250 }),
+        check('message', 'El messege debe tener como mínimo de 15 caracteres').isLength({ min: 15 }),
+        check('message', 'El messege debe tener como maximo de 250 caracteres').isLength({ max: 250 }),
     ],
     mensajeController.crearMensaje
 );
