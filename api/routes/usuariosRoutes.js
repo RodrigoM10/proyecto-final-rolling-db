@@ -18,7 +18,7 @@ router.post(
 );
 router.get('/', usuarioController.obtenerUsuarios);
 router.get('/:id', usuarioController.obtenerUsuario);
-// router.put('/:id', usuarioController.modificarUsuario);
+
 router.put(
     '/:id',
     [
@@ -28,6 +28,7 @@ router.put(
     ],
     usuarioController.modificarUsuario
 );
+
 router.delete('/:id', usuarioController.borrarUsuario);
 
 router.get('/', () => {});

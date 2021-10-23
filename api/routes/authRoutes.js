@@ -26,4 +26,6 @@ router.post(
 //Obtener usuario autenticado
 router.get('/', authController.obtenerUsuarioAutenticado);
 
+router.put('/:id', authController.modificarUsuarioTabla);
+
 module.exports = router;

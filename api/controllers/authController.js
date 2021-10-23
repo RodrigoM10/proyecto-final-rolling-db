@@ -116,3 +116,21 @@ exports.obtenerUsuarioAutenticado = async (req, res) => {
         res.status(401).json({ msg: 'Token no valido' });
     }
 };
+
+exports.modificarUsuarioTabla = async (req, res) => {
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(400).json({ msg: errores.array() });
+    }
+    try {
+        const usuario = await Usuario.findById(req.params.id);
+        if (!req.body.role) {
+            return res.status(400).send('Dato de nombre incompleto');
+        }
+        usuario.role = req.body.role;
+        await usuario.save();
+        res.send(usuario);
+    } catch (error) {
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
+};
