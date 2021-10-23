@@ -50,7 +50,7 @@ exports.obtenerUsuarios = async (req, res) => {
 };
 exports.obtenerUsuario = async (req, res) => {
     try {
-        const usuario = await Usuario.findById(req.params.id).select('name email');
+        const usuario = await Usuario.findById(req.params.id).select('name email role ');
         res.send(usuario);
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');
