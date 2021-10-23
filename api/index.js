@@ -6,6 +6,7 @@ const cors = require('cors');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 const productosRoutes = require('./routes/productosRoutes');
 const authRoutes = require('./routes/authRoutes');
+const mensajesRoutes = require('./routes/mensajesRoutes');
 // crear el servidor
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/mensajes', mensajesRoutes);
 
 // puerto y arranque del servidor
 app.listen(process.env.PORT || 4000, () => {
