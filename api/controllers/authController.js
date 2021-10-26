@@ -124,8 +124,9 @@ exports.modificarUsuarioTabla = async (req, res) => {
     }
     try {
         const usuario = await Usuario.findById(req.params.id);
+        // en esta linea estamos diciendo que el body del "input" este completo si o si-
         if (!req.body.role) {
-            return res.status(400).send('Dato de nombre incompleto');
+            return res.status(400).send('Dato incompleto');
         }
         usuario.role = req.body.role;
         await usuario.save();
