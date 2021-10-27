@@ -75,11 +75,11 @@ exports.modificarUsuario = async (req, res) => {
         if (!req.body.email) {
             return res.status(400).send('Dato de email incompleto');
         }
-        // usuario.email = req.body.email;
-        // if (!req.body.birthday) {
-        //     return res.status(400).send('Dato de birthday incompleto');
-        // }
-        // usuario.birthday = req.body.birthday;
+        usuario.email = req.body.email;
+        if (!req.body.birthday) {
+            return res.status(400).send('Dato de birthday incompleto');
+        }
+        usuario.birthday = req.body.birthday;
         await usuario.save();
         res.send(usuario);
     } catch (error) {
