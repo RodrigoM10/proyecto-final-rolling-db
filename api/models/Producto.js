@@ -29,12 +29,10 @@ const ProductosSchema = mongoose.Schema({
     },
     price: {
         type: Number,
-        trim: true,
         required: true,
     },
     discount: {
         type: Number,
-        trim: true,
         default: 0,
     },
 });
