@@ -45,6 +45,12 @@ exports.modificarProducto = async (req, res) => {
         if (req.body.hasOwnProperty('category')) {
             producto.category = req.body.category;
         }
+        if (req.body.hasOwnProperty('description')) {
+            producto.description = req.body.description;
+        }
+        if (req.body.hasOwnProperty('background')) {
+            producto.background = req.body.background;
+        }
         await producto.save();
         res.send(producto);
     } catch (error) {
