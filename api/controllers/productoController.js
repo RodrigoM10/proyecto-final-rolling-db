@@ -33,14 +33,17 @@ exports.obtenerProducto = async (req, res) => {
 exports.modificarProducto = async (req, res) => {
     try {
         const producto = await Producto.findById(req.params.id);
-        if (req.body.hasOwnProperty('titulo')) {
-            producto.name = req.body.titulo;
+        if (req.body.hasOwnProperty('name')) {
+            producto.name = req.body.name;
         }
         if (req.body.hasOwnProperty('imagen')) {
             producto.image = req.body.imagen;
         }
         if (req.body.hasOwnProperty('price')) {
             producto.price = req.body.price;
+        }
+        if (req.body.hasOwnProperty('discount')) {
+            producto.discount = req.body.discount;
         }
         if (req.body.hasOwnProperty('category')) {
             producto.category = req.body.category;
