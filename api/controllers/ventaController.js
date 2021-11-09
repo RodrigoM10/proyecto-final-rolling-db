@@ -12,7 +12,8 @@ exports.crearVenta = async (req, res) => {
     }
 
     const { buyerDate } = req.body;
-    console.log('🚀 ~ file: ventaController.js ~ line 30 ~ exports.crearVenta= ~ req.body', req.body);
+    console.log('🚀 ~ file: ventaController.js ~ line 15 ~ exports.crearVenta= ~ req.body', req.body);
+
     try {
         //revisar fecha de nacimiento
         const today = new Date().valueOf();
@@ -28,7 +29,6 @@ exports.crearVenta = async (req, res) => {
 
         //nueva venta
         venta = new Venta(req.body);
-
         //guardar venta
         await venta.save();
 
@@ -42,7 +42,8 @@ exports.crearVenta = async (req, res) => {
 
 exports.obtenerVentas = async (req, res) => {
     try {
-        const ventas = await Venta.find();
+        // const ventas = await Venta.find();
+        const ventas = await Venta.ProductsList.findById(req.params.id).select('name, price, discount ');
         res.send(ventas);
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');
