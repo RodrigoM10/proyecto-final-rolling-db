@@ -12,6 +12,7 @@ exports.crearVenta = async (req, res) => {
     }
 
     const { buyerDate } = req.body;
+    console.log('🚀 ~ file: ventaController.js ~ line 30 ~ exports.crearVenta= ~ req.body', req.body);
     try {
         //revisar fecha de nacimiento
         const today = new Date().valueOf();

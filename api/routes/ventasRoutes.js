@@ -9,16 +9,16 @@ const { check } = require('express-validator');
 router.post(
     '/',
     [
-        check('buyerEmail', 'Agrega un Email Valido').isEmail(),
-        check('buyerName', 'Nombre obligatorio').not().isEmpty(),
-        check('buyerLastName', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerCity', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerState', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerZip', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerCardNumber', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerCardName', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerCardDate', 'Apellido obligatorio').not().isEmpty(),
-        check('buyerCardCode', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerData.buyerEmail', 'Agrega un Email Valido').isEmail(),
+        check('buyerData.buyerName', 'Nombre obligatorio').not().isEmpty(),
+        check('buyerData.buyerLastName', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerShipping.buyerCity', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerShipping.buyerState', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerShipping.buyerZip', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerCard.buyerCardNumber', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerCard.buyerCardName', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerCard.buyerCardDate', 'Apellido obligatorio').not().isEmpty(),
+        check('buyerCard.buyerCardCode', 'Apellido obligatorio').not().isEmpty(),
     ],
     ventaController.crearVenta
 );

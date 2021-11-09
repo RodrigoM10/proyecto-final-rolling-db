@@ -33,7 +33,7 @@ exports.registrar = async (req, res) => {
         let usuario;
 
         //nuevo usuario
-        const bodyUsuario = { ...req.body, role: 'user' };
+        const bodyUsuario = { ...req.body, role: 'user', register: new Date() };
         usuario = new Usuario(bodyUsuario);
 
         //hashear el password
