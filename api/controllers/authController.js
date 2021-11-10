@@ -21,7 +21,7 @@ exports.registrar = async (req, res) => {
         const age = today - birthdayDate;
 
         if (age <= AGE18) {
-            return res.status(400).json({ msg: 'Sos menor no podes acceder ' });
+            return res.status(400).json('Debes ser mayor de edad para registrarte');
         }
         // Revisando q el email sea unico
         let usuarioEncontrado = await Usuario.findOne({ email });
