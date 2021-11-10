@@ -25,6 +25,10 @@ const VentasSchema = mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: 'Usuario',
         },
+        registerBuy: {
+            type: Date,
+            default: Date.now(),
+        },
     },
     buyerShipping: {
         buyerAddress1: {
