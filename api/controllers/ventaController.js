@@ -1,5 +1,6 @@
 const Venta = require('../models/Venta');
 const { validationResult } = require('express-validator');
+const Producto = require('../models/Producto');
 
 const AGE18 = 18 * 365 * 24 * 60 * 60 * 1000;
 
@@ -12,7 +13,6 @@ exports.crearVenta = async (req, res) => {
     }
 
     const { buyerDate } = req.body;
-    console.log('🚀 ~ file: ventaController.js ~ line 15 ~ exports.crearVenta= ~ req.body', req.body);
 
     try {
         //revisar fecha de nacimiento
@@ -25,8 +25,20 @@ exports.crearVenta = async (req, res) => {
             return res.status(400).json({ msg: 'Sos menor no podes comprar ' });
         }
 
-        let venta;
+        let venta = req.body;
 
+        //Me trae los datos del producto con el post.
+        let sales = [];
+        const getProduct = async (prod) => {
+            let products = await Producto.findById(prod.productId);
+            return products;
+        };
+        for (let j = 0; j < venta.productsList.length; j++) {
+            const item = venta.productsList[j];
+            const producto = await getProduct(item);
+            sales.push({ producto, quantity: item.quantity });
+        }
+        venta.productsList = sales;
         //nueva venta
         venta = new Venta(req.body);
         //guardar venta
@@ -42,8 +54,7 @@ exports.crearVenta = async (req, res) => {
 
 exports.obtenerVentas = async (req, res) => {
     try {
-        // const ventas = await Venta.find();
-        const ventas = await Venta.ProductsList.findById(req.params.id).select('name, price, discount ');
+        const ventas = await Venta.find();
         res.send(ventas);
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');
