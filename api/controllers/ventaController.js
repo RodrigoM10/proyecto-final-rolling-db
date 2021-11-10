@@ -62,7 +62,7 @@ exports.obtenerVentas = async (req, res) => {
 };
 exports.obtenerVenta = async (req, res) => {
     try {
-        const ventas = await Venta.findById(req.params.id).select('buyerEmail, buyerAdress1');
+        const ventas = await Venta.findById(req.params.id).select('buyerData buyerShipping productsList');
         res.send(ventas);
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');

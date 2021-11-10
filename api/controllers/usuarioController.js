@@ -83,7 +83,7 @@ exports.modificarUsuario = async (req, res) => {
         await usuario.save();
         res.send(usuario);
     } catch (error) {
-        res.status(400).send('Hubo un error en la conexion a la base de datos');
+        res.status(400).send('Hubo un error en la conexion a la base de dat os');
     }
 };
 
