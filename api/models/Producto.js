@@ -25,7 +25,7 @@ const ProductosSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        enum: ['rojo', 'blanco', 'espumoso'],
+        enum: ['Rojo', 'Blanco', 'Espumoso'],
     },
     price: {
         type: Number,
