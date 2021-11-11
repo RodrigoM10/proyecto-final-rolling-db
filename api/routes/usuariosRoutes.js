@@ -20,6 +20,12 @@ router.get('/', usuarioController.obtenerUsuarios);
 router.get('/:id', usuarioController.obtenerUsuario);
 
 router.put(
+    '/image',
+    [check('image', 'La imagen es obligatoria').not().isEmpty()],
+    usuarioController.actualizarImagen
+);
+
+router.put(
     '/:id',
     [
         check('name', 'El nombre es obligatorio').not().isEmpty(),

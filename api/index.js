@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const cors = require('cors');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 const productosRoutes = require('./routes/productosRoutes');
@@ -13,6 +14,7 @@ const app = express();
 
 // Permitir acceso, cors
 app.use(cors());
+app.use(morgan('dev'));
 
 //Conectar a mongodb
 mongoose.connect(process.env.MONGO_URL);

@@ -1,6 +1,7 @@
 const Usuario = require('../models/Usuario');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
 
 exports.crearUsuario = async (req, res) => {
     // revisamos los errores
@@ -83,7 +84,7 @@ exports.modificarUsuario = async (req, res) => {
         await usuario.save();
         res.send(usuario);
     } catch (error) {
-        res.status(400).send('Hubo un error en la conexion a la base de dat os');
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
     }
 };
 
@@ -93,5 +94,19 @@ exports.borrarUsuario = async (req, res) => {
         res.send('usuario eliminado');
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
+};
+
+exports.actualizarImagen = async (req, res) => {
+    const token = req.header('x-auth-token');
+    if (!token) {
+        return res.status(401).json({ msg: ' No hay Token, permiso no valido' });
+    }
+    try {
+        const cifrado = jwt.verify(token, process.env.SECRETA);
+        const usuario = await Usuario.findByIdAndUpdate(cifrado.usuario.id, { image: req.body.image });
+        res.send(usuario);
+    } catch (error) {
+        res.status(401).json({ msg: 'Token no valido' });
     }
 };
